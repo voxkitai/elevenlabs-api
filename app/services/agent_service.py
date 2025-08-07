@@ -7,7 +7,6 @@ import threading
 from typing import Optional, Dict, Any
 from elevenlabs.client import ElevenLabs
 from elevenlabs.conversational_ai.conversation import Conversation
-from elevenlabs.conversational_ai.default_audio_interface import DefaultAudioInterface
 from ..config.settings import settings
 
 class AgentService:
@@ -35,11 +34,20 @@ class AgentService:
             self.elevenlabs = ElevenLabs(api_key=settings.get_api_key())
             
             print("🎯 Setting up conversation...")
+            
+            # Try to import audio interface, fallback to None for Vercel
+            try:
+                from elevenlabs.conversational_ai.default_audio_interface import DefaultAudioInterface
+                audio_interface = DefaultAudioInterface()
+            except ImportError:
+                print("⚠️ Audio interface not available (Vercel environment)")
+                audio_interface = None
+            
             self.conversation = Conversation(
                 self.elevenlabs,
                 settings.get_agent_id(),
                 requires_auth=bool(settings.get_api_key()),
-                audio_interface=DefaultAudioInterface(),
+                audio_interface=audio_interface,
                 callback_agent_response=self.agent_response_callback,
                 callback_user_transcript=self.user_transcript_callback,
             )
