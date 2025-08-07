@@ -8,7 +8,7 @@ from typing import Optional, Dict, Any
 from elevenlabs.client import ElevenLabs
 from elevenlabs.conversational_ai.conversation import Conversation
 from elevenlabs.conversational_ai.default_audio_interface import DefaultAudioInterface
-from config.settings import settings
+from ..config.settings import settings
 
 class AgentService:
     """Service class for managing ElevenLabs conversational agent"""

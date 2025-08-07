@@ -4,8 +4,8 @@ API Routes for ElevenLabs Conversational AI
 import time
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
-from services.agent_service import agent_service
-from config.settings import settings
+from ..services.agent_service import agent_service
+from ..config.settings import settings
 
 # Create router
 router = APIRouter()

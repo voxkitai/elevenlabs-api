@@ -4,8 +4,8 @@ Main application entry point
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from config.settings import settings
-from api.routes import router
+from .config.settings import settings
+from .api.routes import router
 
 # Create FastAPI app
 app = FastAPI(
@@ -29,7 +29,7 @@ app.include_router(router)
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(
-        "main:app",
+        "app.main:app",
         host=settings.HOST,
         port=settings.PORT,
         reload=settings.RELOAD
