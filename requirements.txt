@@ -1,5 +1,5 @@
 # ElevenLabs API Dependencies
-elevenlabs>=0.3.0
+elevenlabs[pyaudio]>=0.3.0
 
 # FastAPI and Uvicorn for web server
 fastapi>=0.104.0
@@ -12,7 +12,8 @@ mangum>=0.17.0
 python-multipart>=0.0.6
 python-dotenv>=1.0.0
 
-# Audio processing dependencies (removed pyaudio for Vercel compatibility)
+# Audio processing dependencies (Railway supports audio)
+pyaudio>=0.2.11
 numpy>=1.24.0
 
 # HTTP client for API calls
