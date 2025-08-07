@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: elevenlabs-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ELEVENLABS_API_KEY
+        value: sk_dc0a0b1a0d4f60609225986d0dbbfabfb5574d14e569aa88
+      - key: ELEVENLABS_AGENT_ID
+        value: agent_01jyejwedvegpshenkr440gp0h 
